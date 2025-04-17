@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     async function axiosProd() {
         try {
-            const response = await axios.get('http://localhost:5000/Userdata');
+            const response = await axios.get('https://online-diary-backend.onrender.com/Userdata');
             setUserdata(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -29,7 +29,7 @@ useEffect(()=>
         async function handleUpdate() {
             for(let i=0;i<userdata.length;i++){
                 if(userdata[i].name === name && userdata[i].pass  === pass){
-                    axios.put(`http://localhost:5000/logindate/${userdata[i]._id}`,{
+                    axios.put(`https://online-diary-backend.onrender.com/logindate/${userdata[i]._id}`,{
                         userstatus:true
                     });
                     console.log(userdata[i])
@@ -50,7 +50,7 @@ handleUpdate()
       userstatus: false
     };
 
-    axios.post('http://localhost:5000/createUser', user)
+    axios.post('https://online-diary-backend.onrender.com/createUser', user)
       .then(() => {
         alert('Registered successfully!');
         setCurrentView('login');
